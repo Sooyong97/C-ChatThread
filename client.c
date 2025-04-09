@@ -55,7 +55,7 @@ int main() {
     pthread_create(&recv_thread, NULL, receive_thread, NULL);
 
     while (1) {
-        prinf("Client: ");
+        printf("Client: ");
         fgets(buffer, sizeof(buffer), stdin);
         write(sock_fd, buffer, strlen(buffer));
 
