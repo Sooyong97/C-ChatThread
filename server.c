@@ -22,7 +22,7 @@ void* receve_thread(void* arg) {
         if (len <= 0) break;
 
         // 메세지 출력
-        printf(buffer, "\n");
+        printf("Client: %s", buffer);
         // 출력 메세지 즉시 출력 (출력 지연 방지)
         fflush(stdout);
         // 클라이언트 종료
@@ -62,7 +62,6 @@ int main() {
     pthread_create(&recv_thread, NULL, receve_thread, NULL);
 
     while (1) {
-        printf("Server: ");
         fgets(buffer, sizeof(buffer), stdin);
         write(client_fd, buffer, strlen(buffer));
         

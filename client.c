@@ -20,7 +20,7 @@ void* receive_thread(void* arg) {
         int len = read(sock_fd, buffer, sizeof(buffer));
         if (len <= 0) break;
 
-        printf(buffer, "\n");
+        printf("Server: %s", buffer);
         fflush(stdout);
 
         if (strncmp(buffer, "exit", 4) == 0) break;
@@ -55,7 +55,6 @@ int main() {
     pthread_create(&recv_thread, NULL, receive_thread, NULL);
 
     while (1) {
-        printf("Client: ");
         fgets(buffer, sizeof(buffer), stdin);
         write(sock_fd, buffer, strlen(buffer));
 
